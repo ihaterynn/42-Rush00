@@ -6,13 +6,15 @@
 /*   By: ryachan <ryachan@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 15:23:08 by ryachan           #+#    #+#             */
-/*   Updated: 2025/04/12 16:11:20 by ryachan          ###   ########.fr       */
+/*   Updated: 2025/04/12 17:59:58 by ryachan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	rush(int x, int y)
+void	ft_putchar(char c);
+
+void	rush01(int x, int y)
 {
 	int	row;
 	int	col;
@@ -25,38 +27,38 @@ void	rush(int x, int y)
 		{
 			while (col <= x)
 			{
-				if (col == 1 && row == 1 || col == x && row == y)
+				if ((col == 1 && row == 1) || (col == x && row == y))
 				{
-					write(1, "/", 1);
+					ft_putchar('/');
 				}
-				else if (row == 1 && col == x || row == y && col == 1)
+				else if ((row == 1 && col == x) || (row == y && col == 1))
 				{
-					write(1, "\\", 1);
+					ft_putchar('\\');
 				}
-				else if (row == 1 && col <= x || row <= y && col == 1)
+				else if ((row == 1 && col <= x) || (row <= y && col == 1))
 				{
-					write(1, "*", 1);
+					ft_putchar('*');
 				}
-				else if (row == y && col <= x || row <= y && col == x)
+				else if ((row == y && col <= x) || (row <= y && col == x))
 				{
-					write(1, "*", 1);
+					ft_putchar('*');
 				}
 
 				else{
-					write(1, " ", 1);
+					ft_putchar(' ');
 				}
 				col++;
 			}
-			write(1, "\n", 1);
+			ft_putchar('\n');
 			row++;
 			col = 1;
 		}
 	}	
 }
 
-
+/*
 int	main(void)
 {
 	rush(7, 10);
 	return (0);
-}
+}*/
