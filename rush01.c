@@ -3,16 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   rush01.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ryachan <ryachan@student.42kl.edu.my>      +#+  +:+       +#+        */
+/*   By: anong <anong@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/12 15:23:08 by ryachan           #+#    #+#             */
-/*   Updated: 2025/04/12 17:59:58 by ryachan          ###   ########.fr       */
+/*   Created: 2025/04/13 15:02:30 by anong             #+#    #+#             */
+/*   Updated: 2025/04/13 15:25:08 by anong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
 void	ft_putchar(char c);
+
+void	ft_logic(int e, int f, int g, int h)
+{
+	if ((e == 1 && f == 1) || (e == g && f == h))
+	{
+		ft_putchar('/');
+	}
+	else if ((f == 1 && e == g) || (f == h && e == 1))
+	{
+		ft_putchar('\\');
+	}
+	else if ((f == 1 && e <= g) || (f <= h && e == 1))
+	{
+		ft_putchar('*');
+	}
+	else if ((f == h && e <= g) || (f <= h && e == g))
+	{
+		ft_putchar('*');
+	}
+	else
+	{
+		ft_putchar(' ');
+	}
+}
 
 void	rush01(int x, int y)
 {
@@ -27,38 +51,12 @@ void	rush01(int x, int y)
 		{
 			while (col <= x)
 			{
-				if ((col == 1 && row == 1) || (col == x && row == y))
-				{
-					ft_putchar('/');
-				}
-				else if ((row == 1 && col == x) || (row == y && col == 1))
-				{
-					ft_putchar('\\');
-				}
-				else if ((row == 1 && col <= x) || (row <= y && col == 1))
-				{
-					ft_putchar('*');
-				}
-				else if ((row == y && col <= x) || (row <= y && col == x))
-				{
-					ft_putchar('*');
-				}
-
-				else{
-					ft_putchar(' ');
-				}
+				ft_logic(col, row, x, y);
 				col++;
 			}
 			ft_putchar('\n');
 			row++;
 			col = 1;
 		}
-	}	
+	}
 }
-
-/*
-int	main(void)
-{
-	rush(7, 10);
-	return (0);
-}*/
